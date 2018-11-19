@@ -1,15 +1,33 @@
 ---
-title: Using YOUR-PRODUCT-NAME
+title: Using IBM WebSphere Liberty for PCF
 owner: Partners
 ---
 
-This topic describes how to use YOUR-PRODUCT-NAME.
+This topic describes how to use IBM WebSphere Liberty for PCF.
 
-##<a id='using'></a> Using YOUR-PRODUCT-NAME
+##<a id='using'></a> Using IBM WebSphere Liberty for PCF
 
-**This topic should include any instructions for how to use the service or dashboard created by the tile. 
-Give procedures for how to perform the different functions offered by your product and provide screenshots where necessary.** 
+To deploy applications using the IBM WebSphere Liberty for PCF buildpack, you are required to accept the IBM Liberty license and IBM JRE license by following the instructions below:
 
-**You can also use this section to include information about Architecture and Troubleshooting for known errors. 
-If you include a Troubleshooting section, follow the Symptom/Explanation format used in the 
-[Okta Troubleshooting](http://docs.pivotal.io/p-identity/okta/troubleshooting.html) topic**.
+1. Read the current IBM [Liberty-License][] and the current IBM [JVM-License][].
+2. Extract the `D/N: <License code>` from the Liberty-License and JVM-License.
+3. Add the following environment variables and extracted license codes to the `manifest.yml` file in the directory from which you push your application. For further information on the format of
+the `manifest.yml` file refer to the [manifest documentation][].
+
+    <pre>
+    ---
+      ...
+      env:
+        IBM_JVM_LICENSE: &lt;JVM license code&gt;
+        IBM_LIBERTY_LICENSE:  &lt;Liberty license code&gt;
+    </pre>
+
+After you have set the license acceptance environment variables, use the following command to deploy the application with the IBM WebSphere Liberty for PCF buildpack:
+
+<pre class='terminal'>
+cf push -b ibm_websphere_liberty_buildpack
+</pre>
+
+[Liberty-License]: https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/18.0.0.3/lafiles/runtime/en.html
+[JVM-License]: http://www14.software.ibm.com/cgi-bin/weblap/lap.pl?la_formnum=&li_formnum=L-SMKR-AVSEUH&title=IBM%AE+SDK%2C+Java%99+Technology+Edition%2C+Version+8.0&l=en
+[manifest documentation]: http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html
