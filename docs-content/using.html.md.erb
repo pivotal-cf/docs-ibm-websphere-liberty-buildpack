@@ -5,14 +5,17 @@ owner: Partners
 
 This topic describes how to use IBM WebSphere Liberty for Pivotal Cloud Foundry (PCF).
 
-##<a id='using'></a> Using IBM WebSphere Liberty for PCF
+##<a id='license'></a> Accept the IBM Liberty and IBM JRE Licenses
 
-To deploy applications using the IBM WebSphere Liberty for PCF buildpack, you are required to accept the IBM Liberty license and IBM JRE license by following the instructions below:
+Before deploying applications using the IBM WebSphere Liberty for PCF buildpack,
+accept the IBM Liberty license and IBM JRE license by following the instructions below:
 
 1. Read the current IBM [Liberty-License][] and the current IBM [JVM-License][].
 2. Extract the `D/N: <License code>` from the Liberty-License and JVM-License.
-3. Add the following environment variables and extracted license codes to the `manifest.yml` file in the directory from which you push your application. For further information on the format of
-the `manifest.yml` file refer to the [manifest documentation][].
+3. Add the following environment variables and extracted license codes to the `manifest.yml` file 
+   in the directory from which you push your application.
+   For more information about the format of the `manifest.yml` file,
+   see [Deploying with Application Manifests][] in the Cloud Foundry documentation.
 
     <pre>
     ---
@@ -22,12 +25,19 @@ the `manifest.yml` file refer to the [manifest documentation][].
         IBM_LIBERTY_LICENSE:  &lt;Liberty license code&gt;
     </pre>
 
-After you have set the license acceptance environment variables, use the following command to deploy the application with the IBM WebSphere Liberty for PCF buildpack:
+##<a id='use'></a> Use IBM WebSphere Liberty for PCF
 
-<pre class='terminal'>
-cf push -b ibm_websphere_liberty_buildpack
-</pre>
+After you have accepted the licenses and added the license code to the `manifest.yml`,
+use the following command to deploy the application with the IBM WebSphere Liberty for PCF buildpack:
+
+```
+cf push APP-NAME -b ibm_websphere_liberty_buildpack
+```
+
+For example:
+
+<pre class="terminal">$ cf push my-app -b ibm_websphere_liberty_buildpack</pre> 
 
 [Liberty-License]: https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/18.0.0.3/lafiles/runtime/en.html
 [JVM-License]: http://www14.software.ibm.com/cgi-bin/weblap/lap.pl?la_formnum=&li_formnum=L-SMKR-AVSEUH&title=IBM%AE+SDK%2C+Java%99+Technology+Edition%2C+Version+8.0&l=en
-[manifest documentation]: http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html
+[Deploying with Application Manifests]: http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html
