@@ -1,13 +1,13 @@
 ---
-title: Using IBM WebSphere Liberty for Pivotal Platform
+title: Using IBM WebSphere Liberty for VMware Tanzu
 owner: Partners
 ---
 
-This topic describes how to use IBM WebSphere Liberty for Pivotal Platform.
+This topic describes how to use IBM WebSphere Liberty for VMware Tanzu.
 
 ##<a id='license'></a> Accept the IBM Liberty and IBM JRE Licenses
 
-Before deploying applications using the IBM WebSphere Liberty for Pivotal Platform buildpack,
+Before deploying applications using the IBM WebSphere Liberty for VMware Tanzu buildpack,
 accept the IBM Liberty license and IBM JRE license by following the instructions below:
 
 1. Read the current IBM [Liberty-License][] and the current IBM [JVM-License][].
@@ -25,10 +25,10 @@ accept the IBM Liberty license and IBM JRE license by following the instructions
         IBM_LIBERTY_LICENSE:  &lt;Liberty license code&gt;
     </pre>
 
-##<a id='use'></a> Use IBM WebSphere Liberty for Pivotal Platform
+##<a id='use'></a> Use IBM WebSphere Liberty for VMware Tanzu
 
 After you have accepted the licenses and added the license code to the `manifest.yml`,
-use the following command to deploy the application with the IBM WebSphere Liberty for Pivotal Platform buildpack:
+use the following command to deploy the application with the IBM WebSphere Liberty for VMware Tanzu buildpack:
 
 ```
 cf push APP-NAME -b ibm_websphere_liberty_buildpack
